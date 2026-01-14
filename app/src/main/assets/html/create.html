@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Unified Liquid Glass Create</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00f2ff",
+              accent: "#00d2ff",
+              "glass-bg": "rgba(255, 255, 255, 0.05)",
+              "background-dark": "#080b10",
+            },
+            fontFamily: {
+              sans: ["Plus Jakarta Sans", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .liquid-glass-panel {
+          @apply bg-white/[0.03] backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3),inset_0_1px_1px_rgba(255,255,255,0.05)];
+        }
+        .liquid-input-field {
+          @apply liquid-glass-panel rounded-2xl px-5 py-6 transition-all duration-300;
+        }
+        .liquid-input-field:focus-within {
+          @apply border-primary/40 bg-white/[0.06] shadow-[0_0_20px_rgba(0,242,255,0.1)];
+        }
+        .liquid-orb {
+          @apply relative flex items-center justify-center rounded-full backdrop-blur-xl border border-white/10 shadow-[inset_0_4px_10px_rgba(255,255,255,0.05),0_10px_20px_rgba(0,0,0,0.2)] transition-all duration-300;
+          background: radial-gradient(circle at 35% 35%, rgba(255, 255, 255, 0.08), transparent);
+        }
+        .liquid-orb::after {
+          content: "";
+          @apply absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 bg-primary/20 blur-md;
+        }
+        .peer:checked + .liquid-orb {
+          @apply border-primary/60 scale-110 shadow-[0_0_20px_rgba(0,242,255,0.3),inset_0_2px_8px_rgba(0,242,255,0.2)];
+        }
+        .peer:checked + .liquid-orb::after {
+          @apply opacity-100;
+        }
+        .neon-glass-btn {
+          @apply relative overflow-hidden rounded-2xl bg-primary text-background-dark font-bold tracking-[0.1em] shadow-[0_0_30px_rgba(0,242,255,0.4)];
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .neon-glass-btn:active {
+          @apply scale-95 shadow-[0_0_45px_rgba(0,242,255,0.6)];
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+      }
+      body {
+        background: radial-gradient(circle at 50% 0%, #0d151e 0%, #05080a 100%);
+        min-height: 100dvh;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="font-sans text-white antialiased">
+    <div class="relative flex min-h-screen w-full flex-col max-w-md mx-auto overflow-hidden bg-transparent">
+      <div class="absolute top-[-10%] left-[-10%] w-80 h-80 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+      <div class="absolute bottom-[-5%] right-[-10%] w-80 h-80 bg-primary/5 rounded-full blur-[100px] -z-10"></div>
+      <div class="flex items-center px-6 pt-12 pb-6 justify-between">
+        <div
+          class="text-white/40 flex size-10 shrink-0 items-center justify-center cursor-pointer hover:text-white transition-colors bg-white/5 rounded-full backdrop-blur-md border border-white/5"
+        >
+          <span class="material-symbols-outlined">chevron_left</span>
+        </div>
+        <h2 class="text-white/80 text-xs font-semibold uppercase tracking-[0.4em]">New Project</h2>
+        <div class="w-10"></div>
+      </div>
+      <div class="flex-1 overflow-y-auto px-6 py-4 space-y-10 pb-44 custom-scrollbar">
+        <div class="flex flex-col items-center gap-4 py-2">
+          <div class="size-24 liquid-orb text-primary border-primary/20">
+            <span class="material-symbols-outlined !text-4xl">add_home_work</span>
+          </div>
+          <div class="text-center">
+            <h1 class="text-xl font-light tracking-tight text-white/90">Initialize Creation</h1>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <label class="block text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] ml-2">Project Identity</label>
+          <div class="liquid-input-field">
+            <input
+              class="w-full bg-transparent border-none focus:ring-0 text-base font-light placeholder:text-white/20 p-0 text-white"
+              placeholder="Enter project name..."
+              type="text"
+            />
+            <div class="w-full h-px bg-white/10 mt-2"></div>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <label class="block text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] ml-2">Atmospheric Tone</label>
+          <div class="grid grid-cols-5 gap-4 px-1">
+            <label class="relative cursor-pointer aspect-square">
+              <input checked class="hidden peer" name="project-color" type="radio" />
+              <div class="w-full h-full liquid-orb" style="background: #00f2ff;"></div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-color" type="radio" />
+              <div class="w-full h-full liquid-orb" style="background: #00a8b1;"></div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-color" type="radio" />
+              <div class="w-full h-full liquid-orb" style="background: #004e52;"></div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-color" type="radio" />
+              <div class="w-full h-full liquid-orb" style="background: #ffffff;"></div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-color" type="radio" />
+              <div class="w-full h-full liquid-orb" style="background: #444444;"></div>
+            </label>
+          </div>
+        </div>
+        <div class="space-y-6">
+          <label class="block text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] ml-2">Iconography</label>
+          <div class="grid grid-cols-4 gap-4 px-1">
+            <label class="relative cursor-pointer aspect-square">
+              <input checked class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">king_bed</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">countertops</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">shower</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">yard</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">pool</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">foundation</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">stairs</span>
+              </div>
+            </label>
+            <label class="relative cursor-pointer aspect-square">
+              <input class="hidden peer" name="project-icon" type="radio" />
+              <div class="w-full h-full liquid-orb text-white/30 peer-checked:text-primary">
+                <span class="material-symbols-outlined">grid_view</span>
+              </div>
+            </label>
+          </div>
+        </div>
+        <div class="liquid-glass-panel p-6 rounded-2xl flex gap-4 items-center">
+          <div class="flex-shrink-0 size-10 liquid-orb border-primary/20 text-primary">
+            <span class="material-symbols-outlined !text-xl">info</span>
+          </div>
+          <p class="text-[11px] text-white/50 leading-relaxed font-normal">
+            Setting a clear aesthetic profile ensures a more fluid management experience for your renovation journey.
+          </p>
+        </div>
+      </div>
+      <div
+        class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-background-dark via-background-dark/95 to-transparent pointer-events-none"
+      >
+        <button class="neon-glass-btn w-full py-5 text-xs flex items-center justify-center gap-2 pointer-events-auto">
+          <span class="material-symbols-outlined !font-bold !text-lg">check_circle</span>
+          SAVE PROJECT
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

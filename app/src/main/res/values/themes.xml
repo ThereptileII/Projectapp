@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.RenovateGlass" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/electric_blue</item>
+        <item name="colorPrimaryVariant">@color/deep_charcoal</item>
+        <item name="colorOnPrimary">@color/deep_charcoal</item>
+        <item name="android:statusBarColor">@color/deep_charcoal</item>
+        <item name="android:navigationBarColor">@color/deep_charcoal</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowSplashScreenBackground">@color/deep_charcoal</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/app_logo</item>
+        <item name="android:windowSplashScreenIconBackgroundColor">@color/deep_charcoal</item>
+        <item name="postSplashScreenTheme">@style/Theme.RenovateGlass</item>
+    </style>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="deep_charcoal">#0A0C10</color>
+    <color name="electric_blue">#00F5FF</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_muted">#80FFFFFF</color>
+    <color name="widget_background">#16181F</color>
+</resources>

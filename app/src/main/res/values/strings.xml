@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Renovate Glass</string>
+    <string name="nav_dashboard">Projects</string>
+    <string name="nav_tasks">Tasks</string>
+    <string name="nav_shopping">Shopping</string>
+    <string name="nav_create">Create</string>
+    <string name="widget_progress_title">Project Progress</string>
+    <string name="widget_tasks_title">Today&#39;s Tasks</string>
+</resources>
