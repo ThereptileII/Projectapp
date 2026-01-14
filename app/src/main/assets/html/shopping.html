@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Liquid Glass Shopping List</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00d2ff",
+              "electric-blue": "#00d2ff",
+              "bg-dark": "#050608",
+            },
+            fontFamily: {
+              sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "0.5rem",
+              lg: "1rem",
+              xl: "1.5rem",
+              "2xl": "2.25rem",
+              full: "9999px",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      :root {
+        --glass-bg: rgba(255, 255, 255, 0.03);
+        --glass-border: rgba(255, 255, 255, 0.08);
+        --glass-blur: blur(20px);
+        --electric-glow: 0 0 15px rgba(0, 210, 255, 0.4);
+      }
+      .liquid-glass-card {
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.01) 100%);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid var(--glass-border);
+      }
+      .store-header-bar {
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-left: 3px solid #00d2ff;
+        box-shadow: -5px 0 15px -5px rgba(0, 210, 255, 0.3);
+      }
+      .liquid-bg {
+        background: radial-gradient(circle at 0% 0%, rgba(0, 210, 255, 0.08) 0%, transparent 40%),
+          radial-gradient(circle at 100% 0%, rgba(0, 210, 255, 0.05) 0%, transparent 30%), #050608;
+      }
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
+      }
+      details[open] summary {
+        opacity: 1;
+      }
+      details:not([open]) summary {
+        opacity: 0.5;
+      }
+      .completed-section {
+        opacity: 0.25;
+        filter: grayscale(1) brightness(0.8);
+        pointer-events: none;
+      }
+      input[type="checkbox"] {
+        appearance: none;
+        background-color: rgba(255, 255, 255, 0.05);
+        width: 1.5rem;
+        height: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.5rem;
+        display: grid;
+        place-content: center;
+        transition: all 0.2s ease;
+      }
+      input[type="checkbox"]::before {
+        content: "check";
+        font-family: "Material Symbols Outlined";
+        font-size: 1.1rem;
+        transform: scale(0);
+        transition: 0.15s transform ease-in-out;
+        color: #050608;
+        font-weight: 900;
+      }
+      input[type="checkbox"]:checked {
+        background: #00d2ff;
+        border-color: #00d2ff;
+        box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+      }
+      input[type="checkbox"]:checked::before {
+        transform: scale(1);
+      }
+      details summary::-webkit-details-marker {
+        display: none;
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="bg-bg-dark font-sans text-white selection:bg-electric-blue/30">
+    <div class="fixed inset-0 liquid-bg pointer-events-none"></div>
+    <div class="relative mx-auto max-w-[480px] min-h-screen flex flex-col">
+      <header class="sticky top-0 z-50 flex items-center justify-between px-6 py-6 backdrop-blur-2xl border-b border-white/5">
+        <button class="flex size-10 items-center justify-center rounded-full bg-white/5 border border-white/10 active:scale-90 transition-transform">
+          <span class="material-symbols-outlined text-white/80">chevron_left</span>
+        </button>
+        <div class="text-center">
+          <h1 class="text-white text-base font-bold tracking-tight">Shopping List</h1>
+          <p class="text-electric-blue text-[9px] uppercase tracking-[0.3em] font-bold mt-0.5">Kitchen Remodel</p>
+        </div>
+        <button class="flex size-10 items-center justify-center rounded-full bg-white/5 border border-white/10">
+          <span class="material-symbols-outlined text-white/80">more_horiz</span>
+        </button>
+      </header>
+      <div class="p-6">
+        <div class="liquid-glass-card p-6 rounded-3xl">
+          <div class="flex justify-between items-baseline mb-4">
+            <p class="text-white/40 text-[10px] font-bold uppercase tracking-widest">Total Progress</p>
+            <div class="text-right">
+              <span class="text-electric-blue font-bold text-lg">65%</span>
+            </div>
+          </div>
+          <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+            <div class="h-full bg-electric-blue shadow-[0_0_10px_#00d2ff] transition-all duration-700" style="width: 65%;"></div>
+          </div>
+          <div class="flex justify-between mt-3">
+            <span class="text-[10px] text-white/30 font-medium">13 items collected</span>
+            <span class="text-[10px] text-white/30 font-medium">7 remaining</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col px-4 gap-6 pb-32">
+        <div class="flex flex-col gap-1">
+          <details class="group" open>
+            <summary
+              class="store-header-bar flex cursor-pointer items-center justify-between px-5 py-4 list-none rounded-lg transition-all active:scale-[0.98]"
+            >
+              <div class="flex flex-col">
+                <h4 class="text-white text-[11px] font-bold tracking-[0.2em] uppercase">Hardware Depot</h4>
+                <p class="text-electric-blue/60 text-[9px] mt-0.5 font-semibold">4 ITEMS PENDING</p>
+              </div>
+              <span class="text-electric-blue group-open:rotate-180 transition-transform duration-300">
+                <span class="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <div class="mt-2 px-2 flex flex-col gap-1">
+              <label class="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <input class="shrink-0" type="checkbox" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-medium text-white/90">Matte Black Cabinet Handles</span>
+                  <span class="text-[10px] text-white/30">Qty: 24 • Aisle 12</span>
+                </div>
+              </label>
+              <label class="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <input class="shrink-0" type="checkbox" />
+                <div class="flex flex-col">
+                  <span class="text-sm font-medium text-white/90">Soft-close Drawer Slides</span>
+                  <span class="text-[10px] text-white/30">Qty: 12 Pairs • Aisle 14</span>
+                </div>
+              </label>
+            </div>
+          </details>
+        </div>
+        <div class="flex flex-col gap-1">
+          <details class="group">
+            <summary
+              class="store-header-bar flex cursor-pointer items-center justify-between px-5 py-4 list-none rounded-lg transition-all active:scale-[0.98]"
+            >
+              <div class="flex flex-col">
+                <h4 class="text-white text-[11px] font-bold tracking-[0.2em] uppercase">Lighting Center</h4>
+                <p class="text-electric-blue/60 text-[9px] mt-0.5 font-semibold">2 ITEMS PENDING</p>
+              </div>
+              <span class="text-electric-blue group-open:rotate-180 transition-transform duration-300">
+                <span class="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <div class="mt-2 px-2 flex flex-col gap-1">
+              <label class="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                <input class="shrink-0" type="checkbox" />
+                <span class="text-sm font-medium">Under-cabinet LED Kit</span>
+              </label>
+            </div>
+          </details>
+        </div>
+        <div class="completed-section">
+          <details class="group">
+            <summary class="store-header-bar flex cursor-pointer items-center justify-between px-5 py-4 list-none rounded-lg">
+              <div class="flex items-center gap-3">
+                <span class="material-symbols-outlined text-electric-blue">check_circle</span>
+                <div class="flex flex-col">
+                  <h4 class="text-white text-[11px] font-bold tracking-[0.2em] uppercase">Paint Masters</h4>
+                  <p class="text-white/40 text-[9px] font-bold uppercase mt-0.5">All Items Picked</p>
+                </div>
+              </div>
+              <span class="text-white/20 group-open:rotate-180 transition-transform duration-300">
+                <span class="material-symbols-outlined">expand_more</span>
+              </span>
+            </summary>
+            <div class="mt-2 px-2 flex flex-col gap-1">
+              <div class="flex items-center gap-4 p-4">
+                <span class="material-symbols-outlined text-electric-blue/40 text-sm">check</span>
+                <span class="text-sm text-white/40 line-through">Satin Finish White (5 Gal)</span>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+      <div class="fixed bottom-10 left-1/2 -translate-x-1/2 w-full max-w-[480px] px-8 z-50">
+        <button
+          class="w-full h-16 flex items-center justify-center gap-3 bg-electric-blue text-bg-dark rounded-2xl shadow-[0_10px_30px_rgba(0,210,255,0.4)] font-bold tracking-[0.15em] uppercase text-[11px] active:scale-95 transition-all"
+        >
+          <span class="material-symbols-outlined font-bold">add_shopping_cart</span>
+          <span>Add Store Section</span>
+        </button>
+      </div>
+      <div class="h-32"></div>
+    </div>
+  </body>
+</html>

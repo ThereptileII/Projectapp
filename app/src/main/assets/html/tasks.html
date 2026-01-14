@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Unified Liquid Glass Tasks</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#00f2ff",
+              "electric-blue": "#00f2ff",
+              "glass-bg": "rgba(255, 255, 255, 0.03)",
+              "glass-stroke": "rgba(255, 255, 255, 0.12)",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      :root {
+        --liquid-bg: #0a0b10;
+        --accent-glow: 0 0 20px rgba(0, 242, 255, 0.4);
+        --glass-blur: blur(25px);
+      }
+      body {
+        background-color: #0a0b10;
+        background-image: radial-gradient(circle at 50% -10%, rgba(0, 242, 255, 0.1) 0%, transparent 40%),
+          radial-gradient(circle at 0% 100%, rgba(0, 242, 255, 0.05) 0%, transparent 30%);
+        background-attachment: fixed;
+        min-height: 100vh;
+      }
+      .glass-panel {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: var(--glass-blur);
+        -webkit-backdrop-filter: var(--glass-blur);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+      }
+      .liquid-pill {
+        background: rgba(255, 255, 255, 0.04);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 999px;
+      }
+      .toggle-active {
+        background: var(--electric-blue);
+        box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        color: #000;
+      }
+      .neon-checkbox {
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 6px;
+        border: 1.5px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.02);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .neon-checkbox:checked {
+        background: var(--electric-blue);
+        border-color: var(--electric-blue);
+        box-shadow: 0 0 12px rgba(0, 242, 255, 0.7);
+      }
+      .neon-checkbox::after {
+        content: "check";
+        font-family: "Material Symbols Outlined";
+        font-size: 16px;
+        color: #000;
+        font-weight: 700;
+        display: none;
+      }
+      .neon-checkbox:checked::after {
+        display: block;
+      }
+      .liquid-fab {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .fab-glow {
+        filter: drop-shadow(0 0 8px rgba(0, 242, 255, 0.3));
+      }
+    </style>
+    <style>
+      body {
+        min-height: max(884px, 100dvh);
+      }
+    </style>
+  </head>
+  <body class="text-white selection:bg-primary/30">
+    <header class="fixed top-0 left-0 right-0 z-50 pt-14 pb-4 px-6 bg-[#0a0b10]/80 backdrop-blur-md">
+      <div class="flex items-center justify-between mb-8">
+        <button class="w-10 h-10 flex items-center justify-center liquid-pill">
+          <span class="material-symbols-outlined text-[20px]">chevron_left</span>
+        </button>
+        <div class="text-center">
+          <h1 class="text-lg font-semibold tracking-tight">Main Bathroom</h1>
+          <p class="text-[10px] text-white/40 uppercase tracking-[0.2em] font-medium mt-0.5">Unified View</p>
+        </div>
+        <button class="w-10 h-10 flex items-center justify-center liquid-pill">
+          <span class="material-symbols-outlined text-[20px]">more_vert</span>
+        </button>
+      </div>
+      <div class="liquid-pill flex p-1 max-w-[280px] mx-auto">
+        <button class="flex-1 py-2 text-sm font-semibold rounded-full toggle-active transition-all duration-300">
+          Tasks
+        </button>
+        <button
+          class="flex-1 py-2 text-sm font-semibold rounded-full text-white/40 hover:text-white transition-all duration-300"
+        >
+          Shopping
+        </button>
+      </div>
+    </header>
+    <main class="pt-52 pb-32 px-6">
+      <div class="glass-panel rounded-3xl p-6 mb-8 border-white/5">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <h3 class="text-xs font-medium text-white/40 mb-1 uppercase tracking-wider">Project Phase</h3>
+            <p class="text-2xl font-bold">Installation</p>
+          </div>
+          <div class="text-right">
+            <p class="text-3xl font-light text-primary">72%</p>
+          </div>
+        </div>
+        <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+          <div class="h-full w-[72%] bg-primary shadow-[0_0_10px_rgba(0,242,255,0.5)]"></div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/5 opacity-60">
+          <input checked class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium line-through text-white/40">Remove old fixtures</p>
+            <p class="text-[10px] text-white/20 mt-0.5">Completed yesterday</p>
+          </div>
+          <span class="material-symbols-outlined text-white/20 text-xl">drag_indicator</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/5 opacity-60">
+          <input checked class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium line-through text-white/40">Waterproofing membranes</p>
+          </div>
+          <span class="material-symbols-outlined text-white/20 text-xl">drag_indicator</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/10 ring-1 ring-primary/20 bg-white/5">
+          <input class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium">Install penny floor tiles</p>
+            <div class="flex gap-2 mt-2">
+              <span class="px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[9px] font-bold uppercase tracking-wide">
+                High Priority
+              </span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-white/40 text-xl">drag_indicator</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/5">
+          <input class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium">Grout wall tiling</p>
+          </div>
+          <span class="material-symbols-outlined text-white/20 text-xl">drag_indicator</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/5">
+          <input class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium">Mount floating vanity</p>
+          </div>
+          <span class="material-symbols-outlined text-white/20 text-xl">drag_indicator</span>
+        </div>
+        <div class="glass-panel rounded-2xl p-4 flex items-center gap-4 border-white/5">
+          <input class="neon-checkbox" type="checkbox" />
+          <div class="flex-1">
+            <p class="text-sm font-medium">Install brass faucet</p>
+          </div>
+          <span class="material-symbols-outlined text-white/20 text-xl">drag_indicator</span>
+        </div>
+      </div>
+    </main>
+    <div class="fixed bottom-28 left-0 right-0 flex justify-center pointer-events-none">
+      <button class="liquid-fab pointer-events-auto active:scale-95 transition-transform group">
+        <span class="material-symbols-outlined text-2xl text-white group-hover:text-primary transition-colors">add</span>
+        <div class="absolute inset-0 bg-primary/10 blur-xl rounded-full -z-10"></div>
+      </button>
+    </div>
+    <nav class="fixed bottom-8 left-6 right-6 z-40">
+      <div class="liquid-pill flex justify-around items-center h-16 bg-black/60 border-white/5 shadow-2xl">
+        <button class="w-12 h-12 flex items-center justify-center text-white/30">
+          <span class="material-symbols-outlined text-2xl">grid_view</span>
+        </button>
+        <button class="w-12 h-12 flex items-center justify-center text-primary fab-glow">
+          <span class="material-symbols-outlined text-2xl fill-[1]">checklist</span>
+        </button>
+        <button class="w-12 h-12 flex items-center justify-center text-white/30">
+          <span class="material-symbols-outlined text-2xl">notifications</span>
+        </button>
+        <button class="w-12 h-12 flex items-center justify-center text-white/30">
+          <span class="material-symbols-outlined text-2xl">account_circle</span>
+        </button>
+      </div>
+    </nav>
+    <div class="fixed top-[20%] -left-[10%] w-[60%] h-[30%] bg-primary/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+    <div class="fixed bottom-[10%] -right-[10%] w-[60%] h-[30%] bg-primary/5 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+  </body>
+</html>
